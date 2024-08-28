@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/CommonTypes" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CommonTypes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost:7246/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="SomeSharedType">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SomeProperty" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SomeSharedType" nillable="true" type="tns:SomeSharedType" />
+  <xs:complexType name="AnotherSharedType">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SomeProperty" type="xs:int" />
+      <xs:element minOccurs="0" name="SomeXmlSerializableType" type="tns:CustomSerializableType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnotherSharedType" nillable="true" type="tns:AnotherSharedType" />
+  <xs:complexType name="CustomSerializableType">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:any namespace="" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomSerializableType" nillable="true" type="tns:CustomSerializableType" />
+</xs:schema>
