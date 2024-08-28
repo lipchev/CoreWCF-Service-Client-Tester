@@ -6,7 +6,7 @@ The solution contains the following projects:
 2. `SerializationTests` - a simple test that demonstrates that the `DataContractSerializer` is capable of dealing with all of our CommonTypes
 3. `CoreWCF-Service` - a .NET8 service hosting a vanilla IService returning the contracts from `CommonTypes`.
 4. `NetFramework-Client` - a simple `net472` client referencing the `CommonTypes` which demonstrates that the scenario used to work before.
-5. `CoreWCF-Service` - a simple `net8.0` client referencing the `CommonTypes` which demonstrates that the scenario doesn't work any more (using the latest build `svcutil tool`: `8.0.0-dev.24427.1`, but also tested with the older versions: `2.1.0` or `2.2.0-preview1.23462.5`)
+5. `CoreWCF-Client` - a simple `net8.0` client referencing the `CommonTypes` which demonstrates that the scenario doesn't work any more (using the latest build `svcutil tool`: `8.0.0-dev.24427.1`, but also tested with the older version: `2.2.0-preview1.23462.5`)
 
 The following json file
 ``` 
@@ -33,7 +33,7 @@ is passed to the svcutil using:
 
 Setting the `"serializer": "DataContractSerializer"` option _should_ work, but _doesn't_ (the generation fails).
 
-Here is the relative parts of the WSDL:
+Here is the relevant parts of the WSDL:
 ```
 <xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CommonTypes">
 <xs:import schemaLocation="https://localhost:7246/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
